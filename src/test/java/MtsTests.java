@@ -73,5 +73,6 @@ public class MtsTests {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement iframe = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".bepaid-iframe")));
 
+        assertTrue(iframe.isDisplayed());
     }
 }
