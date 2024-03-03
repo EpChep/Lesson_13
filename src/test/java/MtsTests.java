@@ -19,7 +19,7 @@ public class MtsTests {
         try {
             WebElement cookieAgreeButton = driver.findElement(By.cssSelector("#cookie-agree"));
             cookieAgreeButton.click();
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException ignored) {
 
         }
     }
@@ -69,11 +69,9 @@ public class MtsTests {
         WebElement continueButton = driver.findElement(By.cssSelector("#pay-connection > button"));
         continueButton.click();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Указываем время ожидания в 10 секунд
-        WebElement popup = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/app-root/div/div/app-payment-container")));
 
-        assertTrue(popup.isDisplayed());
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement iframe = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".bepaid-iframe")));
 
     }
 }
